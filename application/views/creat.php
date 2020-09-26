@@ -1,4 +1,9 @@
 <br>
+<div class="header" style="text-align:center;">
+  <h3><b>welcome to Barbarian Nation</b></h3>
+ 
+ </div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12">
@@ -24,8 +29,44 @@
 					<?php
 				}
 			?>
+			<hr>
+			<h5 style="text-align:center; color:green;">Create Account</h5><br>
+
+
+         <?php 
+              if (isset($profile_id)) 
+              {
+                foreach ($profile_id as $row) 
+                {
+                  $id = $row->id;
+                  $username = $row->username;
+                  $email = $row->email;
+                  $mobile = $row->mobile;
+                  $country = $row->country;
+                  $address = $row->address;
+                  $password = $row->password;
+                
+                }
+              }
+              if (isset($update_profile) && $update_profile == "ok") 
+              {
+            ?>
+                <form method="post" enctype="multipart/form-data" action="<?php echo base_url('Main/profile_up_validation');?>">
+
+            <?php
+
+              }
+              else
+              {
+            ?>
+              <form method="post" enctype="multipart/form-data" action="<?php echo base_url('Main/creataccount_val');?>">
+            <?php
+
+              }
+            ?>
+       	
+
 			
-			<form method="post" enctype="multipart/form-data" action="<?php echo base_url('Main/creataccount_val');?>">
 
 			  <div class="form-row">
 			    <div class="form-group col-md-6">
@@ -61,6 +102,7 @@
 			   
 			   </div>
 
+			   		<input type="text" name="mobile" class="form-control"  placeholder="Mobile No."><br>
 			   	
 			      	<input type="password" name="password" class="form-control"  placeholder="Password">
 
